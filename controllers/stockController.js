@@ -6,6 +6,7 @@ const Stock = require("../models/Stock");
 const getStockData = async (req, res) => {
   try {
     const { symbol } = req.params;
+
     const apiData = await fetchStockData(symbol);
     const transformed = transformStockData(symbol, apiData);
 
@@ -16,14 +17,14 @@ const getStockData = async (req, res) => {
       });
     }
 
-  
+    
     try {
       const stock = await Stock.create(transformed);
     } catch (err) {
-    
+      
     }
 
-  
+
     res.status(200).json({
       success: true,
       source: "api + db",
