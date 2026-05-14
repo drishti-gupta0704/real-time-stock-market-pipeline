@@ -7,6 +7,9 @@ const morgan = require("morgan");
 
 const connectDB = require("./config/db");
 const stockRoutes = require("./routes/stockRoutes");
+require("./workers/stockWorker");
+require("./cron/stockCron");
+
 const app = express();
 
 connectDB();
